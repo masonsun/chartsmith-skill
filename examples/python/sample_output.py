@@ -52,9 +52,15 @@ plt.rcParams.update({
     "axes.facecolor": "white",
     "axes.edgecolor": GRAY_300,
     "axes.linewidth": 0.8,
-    "axes.grid": False,
+    "axes.grid": True,
+    "axes.grid.axis": "y",
+    "grid.color": "#EEEEEE",
+    "grid.linewidth": 0.4,
     "axes.spines.top": False,
     "axes.spines.right": False,
+    "axes.spines.left": False,
+    "axes.spines.bottom": True,
+    "axes.axisbelow": True,
     "xtick.color": GRAY_700,
     "ytick.color": GRAY_700,
     "xtick.major.size": 0,
@@ -107,7 +113,6 @@ ax.set_xticks(x)
 ax.set_xticklabels(df[X_COLUMN])
 ax.yaxis.set_major_formatter(
     ticker.FuncFormatter(lambda y, _: f"${y/1000:.0f}K"))
-ax.yaxis.grid(True, color="#EEEEEE", linewidth=0.4)
 ax.set_axisbelow(True)
 ax.set_ylim(100000, 260000)
 

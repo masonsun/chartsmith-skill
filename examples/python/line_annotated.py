@@ -66,9 +66,15 @@ plt.rcParams.update({
     "axes.facecolor": "white",
     "axes.edgecolor": GRAY_300,
     "axes.linewidth": 0.8,
-    "axes.grid": False,
+    "axes.grid": True,
+    "axes.grid.axis": "y",
+    "grid.color": "#EEEEEE",
+    "grid.linewidth": 0.4,
     "axes.spines.top": False,
     "axes.spines.right": False,
+    "axes.spines.left": False,
+    "axes.spines.bottom": True,
+    "axes.axisbelow": True,
     "xtick.color": GRAY_700,
     "ytick.color": GRAY_700,
     "xtick.major.size": 0,
@@ -122,7 +128,6 @@ ax.set_xticklabels(month_labels)
 ax.set_ylabel("Number of tickets", fontsize=11, color=GRAY_700)
 ax.set_ylim(0, 310)
 ax.yaxis.set_major_locator(plt.MultipleLocator(50))
-ax.yaxis.grid(True, color="#EEEEEE", linewidth=0.4)
 ax.set_axisbelow(True)
 
 fig.text(0.04, 0.97, TITLE, fontsize=18, fontweight="bold",

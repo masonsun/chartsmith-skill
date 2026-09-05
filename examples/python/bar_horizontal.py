@@ -67,6 +67,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({
     "figure.facecolor": "white",
     "axes.facecolor": "white",
+    "axes.edgecolor": GRAY_300,
     "axes.linewidth": 0.8,
     "axes.grid": False,
     "axes.spines.top": False,

@@ -118,7 +118,7 @@ Every script follows this structure exactly:
 
 ### Python Base Style
 
-Apply this `rcParams` block at the top of every Python chart:
+Apply this `rcParams` block at the top of every Python chart. These defaults mirror `theme_chartsmith()` in R — no frame, subtle horizontal gridlines, no tick marks, generous whitespace:
 
 ```python
 import matplotlib.pyplot as plt
@@ -129,11 +129,15 @@ plt.rcParams.update({
     "axes.facecolor": "white",
     "axes.edgecolor": GRAY_300,
     "axes.linewidth": 0.8,
-    "axes.grid": False,
+    "axes.grid": True,
+    "axes.grid.axis": "y",
+    "grid.color": "#EEEEEE",
+    "grid.linewidth": 0.4,
     "axes.spines.top": False,
     "axes.spines.right": False,
-    "axes.spines.left": True,
+    "axes.spines.left": False,
     "axes.spines.bottom": True,
+    "axes.axisbelow": True,
     "xtick.color": GRAY_700,
     "ytick.color": GRAY_700,
     "xtick.major.size": 0,
@@ -148,22 +152,24 @@ plt.rcParams.update({
 })
 ```
 
+Charts that need a left spine or no gridlines (e.g., slope charts, bar charts with no y-axis) can override individual keys after this block.
+
 ### R Base Theme
 
-Apply this ggplot2 theme in every R chart:
+Apply this ggplot2 theme in every R chart. This is the reference aesthetic — the Python `rcParams` above mirrors it:
 
 ```r
 theme_chartsmith <- function(base_size = 12) {
   theme_minimal(base_size = base_size, base_family = "Helvetica") +
     theme(
-      plot.title = element_text(face = "bold", size = rel(1.3), color = g900,
+      plot.title = element_text(face = "bold", size = rel(1.3), color = GRAY_900,
                                 margin = margin(b = 4)),
-      plot.subtitle = element_text(size = rel(0.95), color = g700,
+      plot.subtitle = element_text(size = rel(0.95), color = GRAY_700,
                                    margin = margin(b = 16)),
-      plot.caption = element_text(size = rel(0.75), color = g500,
+      plot.caption = element_text(size = rel(0.75), color = GRAY_500,
                                   hjust = 0, margin = margin(t = 12)),
-      axis.title = element_text(size = rel(0.9), color = g700),
-      axis.text = element_text(size = rel(0.85), color = g700),
+      axis.title = element_text(size = rel(0.9), color = GRAY_700),
+      axis.text = element_text(size = rel(0.85), color = GRAY_700),
       axis.ticks = element_blank(),
       panel.grid.major.x = element_blank(),
       panel.grid.major.y = element_line(color = "#EEEEEE", linewidth = 0.4),

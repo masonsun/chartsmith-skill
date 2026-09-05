@@ -90,6 +90,8 @@ plt.rcParams.update({
     "axes.grid": False,
     "axes.spines.top": False,
     "axes.spines.right": False,
+    "axes.spines.left": False,
+    "axes.spines.bottom": False,
     "xtick.color": GRAY_700,
     "ytick.color": GRAY_700,
     "xtick.major.size": 0,
