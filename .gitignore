@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+*.png
+*.svg
+!examples/**/*.png
+.DS_Store
+*.egg-info/
+dist/
+build/
+.Rhistory
+.RData
