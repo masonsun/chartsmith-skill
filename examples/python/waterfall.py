@@ -50,7 +50,7 @@ GRAY_900 = "#333333"
 FIGURE_WIDTH = 10
 FIGURE_HEIGHT = 6
 DPI = 150
-OUTPUT_FILE = "waterfall.png"
+OUTPUT_FILE = "examples/images/waterfall.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

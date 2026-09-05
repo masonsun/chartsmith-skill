@@ -56,7 +56,7 @@ GRAY_900 = "#333333"
 FIGURE_WIDTH = 14
 FIGURE_HEIGHT = 7
 DPI = 150
-OUTPUT_FILE = "bar_horizontal.png"
+OUTPUT_FILE = "examples/images/bar_horizontal.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

@@ -1,44 +1,42 @@
+![Version](https://img.shields.io/badge/version-1.0.0-green)
+![Skills](https://img.shields.io/badge/skills-1-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue)
+![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue)
+![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blueviolet)
+![SKILL.md](https://img.shields.io/badge/agent-SKILL.md-orange)
+
 # Chartsmith
 
-A Claude Code skill for generating publication-quality data visualizations. Feed it a CSV or describe your data — it infers the right chart type, then produces clean, tweakable Python or R code that follows the principles from Cole Knaflic's *Storytelling with Data*.
+A Claude Code skill for generating publication-quality data visualizations following Cole Knaflic's [*Storytelling with Data*](https://www.storytellingwithdata.com/) principles.
 
-## What it does
+<p align="center">
+  <img src="examples/images/sample_output.png" alt="Chartsmith sample output — revenue vs target line chart" width="700">
+</p>
 
-1. **Reads your data** — CSV files, dataframes, or verbal descriptions
-2. **Recommends a chart type** — bar, line, waterfall, slope, scatterplot, heatmap, or Sankey based on data structure
-3. **Generates runnable code** — Python (seaborn/matplotlib) or R (ggplot2) with all user-configurable values isolated at the top
-4. **Follows a design constitution** — 10 principles that produce clean, honest, story-driven charts every time
+Feed it a CSV or describe your data — Chartsmith infers the right chart type, then produces clean, tweakable Python or R code. Every chart follows a 10-point [design constitution](CONSTITUTION.md): no chart junk, insight-driven titles, direct labels, and a two-layer [color system](PALETTE.md) that puts the story first.
 
-## The Constitution (summary)
-
-1. Every element earns its place — no chart junk
-2. Color is signal, not decoration — gray for context, one accent pair for the story
-3. Label data directly — no legends
-4. Titles state the insight — not "Revenue Over Time" but "Revenue grew 23%"
-5. Annotate the "so what"
-6. Visual hierarchy through weight
-7. Choose the right form
-8. Isolate what the reader will change
-9. Whitespace is a feature
-10. Accessibility is non-negotiable
-
-See [CONSTITUTION.md](CONSTITUTION.md) for the full principles.
+<table>
+  <tr>
+    <td align="center"><img src="examples/images/waterfall.png" alt="Waterfall chart" width="300"><br><sub>Waterfall</sub></td>
+    <td align="center"><img src="examples/images/bar_horizontal.png" alt="Horizontal bar chart" width="300"><br><sub>Horizontal Bar</sub></td>
+    <td align="center"><img src="examples/images/slope_chart.png" alt="Slope chart" width="300"><br><sub>Slope Chart</sub></td>
+  </tr>
+</table>
 
 ## Install
 
-Copy the skill file into your Claude Code skills directory:
-
 ```bash
-# Project-level (recommended)
-mkdir -p .claude/skills
-cp skill.md .claude/skills/chartsmith.md
+# With the skills CLI (recommended)
+npx skills add masonsun/chartsmith-skill
 
-# Global (available in all projects)
-mkdir -p ~/.claude/skills
-cp skill.md ~/.claude/skills/chartsmith.md
+# Or clone and run the install script
+git clone https://github.com/masonsun/chartsmith-skill.git
+cd chartsmith-skill
+bash install.sh            # project-level
+bash install.sh --global   # all projects
 ```
 
-## Usage
+## Quick Start
 
 Once installed, Chartsmith activates automatically when you ask Claude Code to create a visualization:
 
@@ -48,19 +46,13 @@ Once installed, Chartsmith activates automatically when you ask Claude Code to c
 > Here's my quarterly revenue data — what chart should I use?
 
 > Create a waterfall chart showing our headcount changes this year
-
-> /chartsmith
 ```
 
 ### What you get
 
-A complete, runnable script with this structure:
+A complete, runnable script with all configuration at the top:
 
 ```python
-# ============================================================
-# CONFIGURATION — Edit these variables to customize your chart
-# ============================================================
-
 # --- DATA ---
 DATA_FILE = "revenue.csv"
 
@@ -74,31 +66,16 @@ HIGHLIGHT_ITEMS = ["September", "October"]
 
 # --- OUTPUT ---
 OUTPUT_FILE = "revenue_growth.png"
-
-# ============================================================
-# CHART CODE
-# ============================================================
-...
 ```
 
-Change the variables at the top. Run the script. Get a publication-ready chart.
+Change the variables. Run the script. Get a publication-ready chart.
 
-## Color System
+## How It Works
 
-Every chart uses a two-layer system:
-
-- **Gray layer** — context, background data, "everything else"
-- **Accent layer** — one color family (dark + light) spotlighting the key insight
-
-| Role | Default | Hex |
-|---|---|---|
-| Context (light) | Light gray | `#C0C0C0` |
-| Context (medium) | Medium gray | `#999999` |
-| Accent (primary) | Steel blue dark | `#2B5C8A` |
-| Accent (secondary) | Steel blue light | `#8FABBE` |
-| Negative/alert | Maroon | `#8B2323` |
-
-Five accent palettes ship by default (steel blue, slate navy, maroon, teal, burnt orange). See [PALETTE.md](PALETTE.md) for the full reference.
+1. **Reads your data** — CSV files, dataframes, or verbal descriptions
+2. **Recommends a chart type** — using a decision tree based on data structure
+3. **Generates runnable code** — Python (matplotlib) or R (ggplot2)
+4. **Follows the constitution** — 10 ranked principles produce clean, honest charts every time
 
 ## Supported Chart Types
 
@@ -113,21 +90,56 @@ Five accent palettes ship by default (steel blue, slate navy, maroon, teal, burn
 | Heatmap | Sequential color scale with value labels |
 | Sankey | Flow between stages |
 
+## Color System
+
+Every chart uses a two-layer system — gray for context, one accent pair for the story:
+
+| Role | Default | Hex |
+|---|---|---|
+| Context (light) | Light gray | `#C0C0C0` |
+| Context (medium) | Medium gray | `#999999` |
+| Accent (primary) | Steel blue dark | `#2B5C8A` |
+| Accent (secondary) | Steel blue light | `#8FABBE` |
+| Negative/alert | Maroon | `#8B2323` |
+
+Five accent palettes ship by default. See [PALETTE.md](PALETTE.md) for the full reference.
+
 ## Examples
 
-The `examples/python/` directory contains complete scripts reproducing charts from *Storytelling with Data*:
+The [`examples/python/`](examples/python/) directory contains complete scripts reproducing charts from *Storytelling with Data*:
 
-- `bar_horizontal.py` — Top 10 design concerns (Figure 4.9)
-- `bar_stacked.py` — Goal attainment over time (100% stacked)
-- `line_annotated.py` — Ticket volume with contextual annotation
-- `waterfall.py` — Headcount math
-- `slope_chart.py` — Employee feedback over time
-- `scatterplot_2x2.py` — Satisfaction vs issues matrix (Figure 5.6)
+| Script | Chart | Preview |
+|---|---|---|
+| `bar_horizontal.py` | Top 10 design concerns | [view](examples/images/bar_horizontal.png) |
+| `bar_stacked.py` | Goal attainment (100% stacked) | [view](examples/images/bar_stacked.png) |
+| `line_annotated.py` | Ticket volume with annotation | [view](examples/images/line_annotated.png) |
+| `waterfall.py` | Headcount math | [view](examples/images/waterfall.png) |
+| `slope_chart.py` | Employee feedback over time | [view](examples/images/slope_chart.png) |
+| `scatterplot_2x2.py` | Satisfaction vs issues matrix | [view](examples/images/scatterplot_2x2.png) |
+| `sample_output.py` | Revenue vs target (end-to-end demo) | [view](examples/images/sample_output.png) |
 
-## License
+## Design Principles
 
-MIT — see [LICENSE](LICENSE).
+Chartsmith follows a 10-point design constitution adapted from *Storytelling with Data*. Every element earns its place, color is signal not decoration, and titles state the insight. See [CONSTITUTION.md](CONSTITUTION.md) for the full principles.
+
+## Dependencies
+
+```
+matplotlib>=3.5
+pandas>=1.3
+numpy>=1.20
+```
+
+Install with `pip install -r requirements.txt`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding examples and chart types.
 
 ## Acknowledgments
 
 Design principles adapted from Cole Knaflic's [*Storytelling with Data*](https://www.storytellingwithdata.com/). Chartsmith is an independent project, not affiliated with or endorsed by the author.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

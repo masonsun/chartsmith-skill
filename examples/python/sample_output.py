@@ -37,7 +37,7 @@ GRAY_100 = "#E8E8E8"
 FIGURE_WIDTH = 11
 FIGURE_HEIGHT = 6
 DPI = 150
-OUTPUT_FILE = "sample_output.png"
+OUTPUT_FILE = "examples/images/sample_output.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

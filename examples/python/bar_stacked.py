@@ -48,7 +48,7 @@ GRAY_900 = "#333333"
 FIGURE_WIDTH = 11
 FIGURE_HEIGHT = 7
 DPI = 150
-OUTPUT_FILE = "bar_stacked.png"
+OUTPUT_FILE = "examples/images/bar_stacked.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

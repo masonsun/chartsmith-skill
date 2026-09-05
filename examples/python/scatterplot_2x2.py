@@ -74,7 +74,7 @@ POINT_SIZE_REFERENCE = 100
 FIGURE_WIDTH = 9
 FIGURE_HEIGHT = 8
 DPI = 150
-OUTPUT_FILE = "scatterplot_2x2.png"
+OUTPUT_FILE = "examples/images/scatterplot_2x2.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

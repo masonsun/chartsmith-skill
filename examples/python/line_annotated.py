@@ -53,7 +53,7 @@ CONTEXT_LINEWIDTH = 1.8
 FIGURE_WIDTH = 10
 FIGURE_HEIGHT = 6
 DPI = 150
-OUTPUT_FILE = "line_annotated.png"
+OUTPUT_FILE = "examples/images/line_annotated.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

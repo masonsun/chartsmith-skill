@@ -54,7 +54,7 @@ DOT_SIZE_HIGHLIGHT = 60
 FIGURE_WIDTH = 8
 FIGURE_HEIGHT = 9
 DPI = 150
-OUTPUT_FILE = "slope_chart.png"
+OUTPUT_FILE = "examples/images/slope_chart.png"
 
 # ============================================================
 # CHART CODE — Modify below for advanced customization

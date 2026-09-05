@@ -1,4 +1,5 @@
 ---
+name: chartsmith
 description: "Generate publication-quality data visualizations. Infers chart types from data, produces Python (seaborn/matplotlib) or R (ggplot2) code with isolated user variables, following Storytelling with Data principles."
 ---
 
