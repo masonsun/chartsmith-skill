@@ -16,7 +16,7 @@ Y_CONTEXT = "target"
 
 # --- CONTENT ---
 TITLE = "Revenue exceeded targets every month since June"
-SUBTITLE = "Monthly revenue vs. target, Jan–Dec (USD)"
+SUBTITLE = "Monthly revenue vs. target, Jan–Dec 2024 (USD)"
 SOURCE = ""
 ANNOTATION_TEXT = "Sustained outperformance\nbegan after the Q2\npricing restructure."
 ANNOTATION_MONTH = "Jun"
@@ -74,21 +74,10 @@ fig, ax = plt.subplots(figsize=(FIGURE_WIDTH, FIGURE_HEIGHT))
 
 x = range(len(df))
 
-ax.fill_between(x, df[Y_CONTEXT], alpha=0.0)
 ax.plot(x, df[Y_CONTEXT], color=GRAY_300, linewidth=1.5,
         linestyle="--", zorder=2)
 ax.plot(x, df[Y_PRIMARY], color=ACCENT_DARK, linewidth=2.5,
         marker="o", markersize=5, zorder=3)
-
-exceed_mask = df[Y_PRIMARY] >= df[Y_CONTEXT]
-for i in range(len(df) - 1):
-    if exceed_mask.iloc[i] and exceed_mask.iloc[i + 1]:
-        ax.fill_between(
-            [i, i + 1],
-            [df[Y_CONTEXT].iloc[i], df[Y_CONTEXT].iloc[i + 1]],
-            [df[Y_PRIMARY].iloc[i], df[Y_PRIMARY].iloc[i + 1]],
-            color=ACCENT_LIGHT, alpha=0.15, zorder=1,
-        )
 
 for i in [0, len(df) - 1]:
     val = df[Y_PRIMARY].iloc[i]

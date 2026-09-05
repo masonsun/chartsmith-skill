@@ -118,6 +118,13 @@ The [`examples/python/`](examples/python/) directory contains complete scripts r
 | `scatterplot_2x2.py` | Satisfaction vs issues matrix | [view](examples/images/scatterplot_2x2.png) |
 | `sample_output.py` | Revenue vs target (end-to-end demo) | [view](examples/images/sample_output.png) |
 
+R (ggplot2) equivalents are in [`examples/r/`](examples/r/):
+
+| Script | Chart | Preview |
+|---|---|---|
+| `bar_horizontal.R` | Top 10 design concerns | [view](examples/images/bar_horizontal_r.png) |
+| `sample_output.R` | Revenue vs target | [view](examples/images/sample_output_r.png) |
+
 ## Design Principles
 
 Chartsmith follows a 10-point design constitution adapted from *Storytelling with Data*. Every element earns its place, color is signal not decoration, and titles state the insight. See [CONSTITUTION.md](CONSTITUTION.md) for the full principles.
